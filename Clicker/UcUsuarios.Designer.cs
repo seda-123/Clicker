@@ -1,6 +1,6 @@
 ﻿namespace Clicker
 {
-    partial class Form4
+    partial class UcUsuarios
     {
         /// <summary>
         /// Required designer variable.

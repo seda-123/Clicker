@@ -1,6 +1,6 @@
 ﻿namespace Clicker
 {
-    partial class Form3
+    partial class UcInicio
     {
         /// <summary>
         /// Required designer variable.
