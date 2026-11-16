@@ -6,9 +6,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Clicker
+namespace Clicker.UserControls
 {
-    public partial class UcUsuarios : Form
+    public partial class UcUsuarios : UserControl
     {
         public UcUsuarios()
         {
