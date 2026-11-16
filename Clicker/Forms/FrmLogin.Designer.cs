@@ -69,6 +69,7 @@
             inici_sessio.TabIndex = 8;
             inici_sessio.Text = "Iniciar sessió";
             inici_sessio.UseVisualStyleBackColor = false;
+            inici_sessio.Click += inici_sessio_Click;
             // 
             // registrat
             // 
