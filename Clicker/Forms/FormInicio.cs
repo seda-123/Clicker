@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Clicker
 {
-    public partial class UcInicio : Form
+    public partial class FormInicio : Form
     {
-        public UcInicio()
+        public FormInicio()
         {
             InitializeComponent();
         }
