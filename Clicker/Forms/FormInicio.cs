@@ -14,6 +14,7 @@ namespace Clicker
         public FormInicio()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
             CargarInicio();
         }
 
@@ -30,6 +31,11 @@ namespace Clicker
             inicio.Dock = DockStyle.Fill;
 
             PanelContenido.Controls.Add(inicio);
+        }
+
+        private void PanelContenido_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
