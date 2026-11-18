@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Windows.Forms;
 using Clicker.Models;
 using Clicker.Services;
@@ -10,6 +11,7 @@ namespace Clicker.UserControls
     public partial class UcUsuarios : UserControl
     {
         private UsuarioService usuarioService = new UsuarioService();
+        private GameService gameService = new GameService();
 
         public UcUsuarios()
         {
@@ -22,31 +24,65 @@ namespace Clicker.UserControls
         {
             try
             {
+                // Obtenemos todos los usuarios
                 List<Usuario> usuarios =
                     await usuarioService.ObtenerUsuariosAsync();
 
-                dgvUsuarios.AutoGenerateColumns = false;
+                // Configuramos la tabla
+                ConfigurarTabla();
 
-                dgvUsuarios.Columns.Clear();
-
-                
-                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+                // Recorremos todos los usuarios
+                foreach (Usuario usuario in usuarios)
                 {
-                    Name = "colId",
-                    HeaderText = "ID",
-                    DataPropertyName = "IdUser",
-                    Visible = false
-                });
+                    try
+                    {
+                        // Obtenemos la partida del usuario
+                        Game partida =
+                            await gameService.ObtenerPartidaAsync(usuario.IdUser);
 
-                
-                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
-                {
-                    Name = "colUsuario",
-                    HeaderText = "USUARIO",
-                    DataPropertyName = "UserName"
-                });
+                        if (partida == null)
+                        {
+                            dgvUsuarios.Rows.Add(
+                                usuario.UserName,
+                                "—",
+                                "—",
+                                "—",
+                                "Sin partida"
+                            );
 
-                dgvUsuarios.DataSource = usuarios;
+                            continue;
+                        }
+
+                        // Calculamos el tiempo jugado
+                        DateTime fechaFinal = partida.FinishDate ?? DateTime.Now;
+
+                        TimeSpan tiempoJugado =
+                            fechaFinal - partida.StartDate;
+
+                        string tiempo =
+                            $"{(int)tiempoJugado.TotalHours} h {tiempoJugado.Minutes} min";
+
+                        // Añadimos los datos a la tabla
+                        dgvUsuarios.Rows.Add(
+                            usuario.UserName,
+                            partida.StartDate.ToString("dd/MM/yyyy"),
+                            partida.TotalMoney.ToString("N0") + " €",
+                            tiempo,
+                            partida.Status ? "Activo" : "Inactivo"
+                        );
+                    }
+                    catch (HttpRequestException)
+                    {
+                        // Si el usuario no tiene partida disponible
+                        dgvUsuarios.Rows.Add(
+                            usuario.UserName,
+                            "—",
+                            "—",
+                            "—",
+                            "Sin partida"
+                        );
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -57,6 +93,58 @@ namespace Clicker.UserControls
                     MessageBoxIcon.Error
                 );
             }
+        }
+
+        private void ConfigurarTabla()
+        {
+            dgvUsuarios.Rows.Clear();
+            dgvUsuarios.Columns.Clear();
+
+            dgvUsuarios.AutoGenerateColumns = false;
+            dgvUsuarios.AllowUserToAddRows = false;
+            dgvUsuarios.AllowUserToDeleteRows = false;
+            dgvUsuarios.ReadOnly = true;
+            dgvUsuarios.RowHeadersVisible = false;
+            dgvUsuarios.SelectionMode =
+                DataGridViewSelectionMode.FullRowSelect;
+
+            dgvUsuarios.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.Fill;
+
+            // USUARIO
+            dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colUsuario",
+                HeaderText = "USUARIO"
+            });
+
+            // FECHA DE CREACIÓN
+            dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colFecha",
+                HeaderText = "FECHA DE CREACIÓN"
+            });
+
+            // MONEDAS
+            dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colMonedas",
+                HeaderText = "MONEDAS"
+            });
+
+            // TIEMPO JUGADO
+            dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colTiempo",
+                HeaderText = "TIEMPO JUGADO"
+            });
+
+            // ESTADO
+            dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colEstado",
+                HeaderText = "ESTADO"
+            });
         }
 
         // Eventos generados por el Designer
@@ -77,3 +165,4 @@ namespace Clicker.UserControls
         }
     }
 }
+//
