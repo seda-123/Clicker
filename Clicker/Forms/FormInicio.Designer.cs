@@ -117,6 +117,7 @@
             configuracion.Text = "⚙ Configuración";
             configuracion.TextAlign = ContentAlignment.MiddleLeft;
             configuracion.UseVisualStyleBackColor = true;
+            configuracion.Click += configuracion_Click;
             // 
             // Metricas
             // 
@@ -133,6 +134,7 @@
             Metricas.Text = "▥ Métricas";
             Metricas.TextAlign = ContentAlignment.MiddleLeft;
             Metricas.UseVisualStyleBackColor = true;
+            Metricas.Click += Metricas_Click;
             // 
             // Historial_partidas
             // 
@@ -149,6 +151,7 @@
             Historial_partidas.Text = "◷ Historial de partidas";
             Historial_partidas.TextAlign = ContentAlignment.MiddleLeft;
             Historial_partidas.UseVisualStyleBackColor = true;
+            Historial_partidas.Click += Historial_partidas_Click;
             // 
             // Farmer_Clicker
             // 
@@ -165,6 +168,7 @@
             Farmer_Clicker.Text = "Farmer Clicker";
             Farmer_Clicker.TextAlign = ContentAlignment.MiddleLeft;
             Farmer_Clicker.UseVisualStyleBackColor = true;
+            Farmer_Clicker.Click += Farmer_Clicker_Click;
             // 
             // jugadores
             // 
@@ -181,6 +185,7 @@
             jugadores.Text = "♙ Jugadores";
             jugadores.TextAlign = ContentAlignment.MiddleLeft;
             jugadores.UseVisualStyleBackColor = true;
+            jugadores.Click += jugadores_Click;
             // 
             // usuarios
             // 
@@ -197,16 +202,17 @@
             usuarios.Text = "♧ Usuarios";
             usuarios.TextAlign = ContentAlignment.MiddleLeft;
             usuarios.UseVisualStyleBackColor = true;
+            usuarios.Click += usuarios_Click;
             // 
             // inicio
             // 
-            inicio.BackColor = Color.FromArgb(15, 43, 100);
+            inicio.BackColor = Color.FromArgb(6, 23, 68);
             inicio.Cursor = Cursors.Hand;
             inicio.FlatAppearance.BorderSize = 0;
             inicio.FlatAppearance.MouseOverBackColor = Color.FromArgb(15, 43, 100);
             inicio.FlatStyle = FlatStyle.Flat;
             inicio.Font = new Font("Comfortaa", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            inicio.ForeColor = Color.White;
+            inicio.ForeColor = Color.FromArgb(190, 205, 230);
             inicio.Location = new Point(4, 90);
             inicio.Name = "inicio";
             inicio.Size = new Size(167, 36);
@@ -214,6 +220,7 @@
             inicio.Text = "⌂ Inicio";
             inicio.TextAlign = ContentAlignment.MiddleLeft;
             inicio.UseVisualStyleBackColor = false;
+            inicio.Click += inicio_Click;
             // 
             // PanelLogo
             // 
