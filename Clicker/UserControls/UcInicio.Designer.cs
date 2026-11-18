@@ -30,7 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcInicio));
             PanelDashboard = new Panel();
-            PanelGraficoActividad = new Clicker.Controles.TarjetaDashboard();
+            ProgresoPorNivelPanel = new Clicker.Controles.TarjetaDashboard();
+            PartidasRecientes = new Clicker.Controles.TarjetaDashboard();
             PanelDuracion = new Clicker.Controles.TarjetaDashboard();
             lblDescripcioDurada = new Label();
             pictureBox3 = new PictureBox();
@@ -53,11 +54,13 @@
             LblTituloAlumnos = new Label();
             LblDescripcion = new Label();
             LblBienvenida = new Label();
-            LblTituloGrafico = new Label();
-            LblSubtituloGrafico = new Label();
-            PanelGraficoLineas = new Panel();
+            PartidasTitol = new Label();
+            PartidasDesc = new Label();
+            ProgresoDesc = new Label();
+            ProgresoTitol = new Label();
             PanelDashboard.SuspendLayout();
-            PanelGraficoActividad.SuspendLayout();
+            ProgresoPorNivelPanel.SuspendLayout();
+            PartidasRecientes.SuspendLayout();
             PanelDuracion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             PanelMonedas.SuspendLayout();
@@ -70,7 +73,8 @@
             // 
             // PanelDashboard
             // 
-            PanelDashboard.Controls.Add(PanelGraficoActividad);
+            PanelDashboard.Controls.Add(ProgresoPorNivelPanel);
+            PanelDashboard.Controls.Add(PartidasRecientes);
             PanelDashboard.Controls.Add(PanelDuracion);
             PanelDashboard.Controls.Add(PanelMonedas);
             PanelDashboard.Controls.Add(PanelSesiones);
@@ -83,17 +87,27 @@
             PanelDashboard.Size = new Size(1871, 1280);
             PanelDashboard.TabIndex = 0;
             // 
-            // PanelGraficoActividad
+            // ProgresoPorNivelPanel
             // 
-            PanelGraficoActividad.BackColor = Color.Transparent;
-            PanelGraficoActividad.Controls.Add(PanelGraficoLineas);
-            PanelGraficoActividad.Controls.Add(LblSubtituloGrafico);
-            PanelGraficoActividad.Controls.Add(LblTituloGrafico);
-            PanelGraficoActividad.Location = new Point(60, 410);
-            PanelGraficoActividad.Name = "PanelGraficoActividad";
-            PanelGraficoActividad.Padding = new Padding(12);
-            PanelGraficoActividad.Size = new Size(1029, 288);
-            PanelGraficoActividad.TabIndex = 8;
+            ProgresoPorNivelPanel.BackColor = Color.Transparent;
+            ProgresoPorNivelPanel.Controls.Add(ProgresoDesc);
+            ProgresoPorNivelPanel.Controls.Add(ProgresoTitol);
+            ProgresoPorNivelPanel.Location = new Point(1112, 403);
+            ProgresoPorNivelPanel.Name = "ProgresoPorNivelPanel";
+            ProgresoPorNivelPanel.Padding = new Padding(12);
+            ProgresoPorNivelPanel.Size = new Size(549, 429);
+            ProgresoPorNivelPanel.TabIndex = 9;
+            // 
+            // PartidasRecientes
+            // 
+            PartidasRecientes.BackColor = Color.Transparent;
+            PartidasRecientes.Controls.Add(PartidasDesc);
+            PartidasRecientes.Controls.Add(PartidasTitol);
+            PartidasRecientes.Location = new Point(60, 403);
+            PartidasRecientes.Name = "PartidasRecientes";
+            PartidasRecientes.Padding = new Padding(12);
+            PartidasRecientes.Size = new Size(920, 429);
+            PartidasRecientes.TabIndex = 8;
             // 
             // PanelDuracion
             // 
@@ -102,7 +116,7 @@
             PanelDuracion.Controls.Add(pictureBox3);
             PanelDuracion.Controls.Add(LblValorDuracion);
             PanelDuracion.Controls.Add(lbltitolDurada);
-            PanelDuracion.Location = new Point(1103, 100);
+            PanelDuracion.Location = new Point(1379, 118);
             PanelDuracion.Name = "PanelDuracion";
             PanelDuracion.Padding = new Padding(12);
             PanelDuracion.Size = new Size(282, 130);
@@ -115,9 +129,9 @@
             lblDescripcioDurada.ForeColor = Color.FromArgb(152, 162, 179);
             lblDescripcioDurada.Location = new Point(15, 105);
             lblDescripcioDurada.Name = "lblDescripcioDurada";
-            lblDescripcioDurada.Size = new Size(110, 18);
+            lblDescripcioDurada.Size = new Size(133, 18);
             lblDescripcioDurada.TabIndex = 15;
-            lblDescripcioDurada.Text = "Temps total de joc";
+            lblDescripcioDurada.Text = "Tiempo total del juego";
             // 
             // pictureBox3
             // 
@@ -148,9 +162,9 @@
             lbltitolDurada.ForeColor = Color.FromArgb(102, 112, 133);
             lbltitolDurada.Location = new Point(15, 18);
             lbltitolDurada.Name = "lbltitolDurada";
-            lbltitolDurada.Size = new Size(61, 21);
+            lbltitolDurada.Size = new Size(97, 21);
             lbltitolDurada.TabIndex = 12;
-            lbltitolDurada.Text = "Durada";
+            lbltitolDurada.Text = "Tiempo total";
             // 
             // PanelMonedas
             // 
@@ -159,7 +173,7 @@
             PanelMonedas.Controls.Add(pictureBox2);
             PanelMonedas.Controls.Add(LblValorMonedas);
             PanelMonedas.Controls.Add(lblTitulMonedas);
-            PanelMonedas.Location = new Point(761, 100);
+            PanelMonedas.Location = new Point(947, 118);
             PanelMonedas.Name = "PanelMonedas";
             PanelMonedas.Padding = new Padding(12);
             PanelMonedas.Size = new Size(282, 130);
@@ -172,9 +186,9 @@
             lbldescripcioMonedes.ForeColor = Color.FromArgb(152, 162, 179);
             lbldescripcioMonedes.Location = new Point(15, 105);
             lbldescripcioMonedes.Name = "lbldescripcioMonedes";
-            lbldescripcioMonedes.Size = new Size(189, 18);
+            lbldescripcioMonedes.Size = new Size(185, 18);
             lbldescripcioMonedes.TabIndex = 11;
-            lbldescripcioMonedes.Text = "Total de monedes aconseguides";
+            lbldescripcioMonedes.Text = "Total de monedas recolectadas";
             // 
             // pictureBox2
             // 
@@ -205,9 +219,9 @@
             lblTitulMonedas.ForeColor = Color.FromArgb(102, 112, 133);
             lblTitulMonedas.Location = new Point(15, 18);
             lblTitulMonedas.Name = "lblTitulMonedas";
-            lblTitulMonedas.Size = new Size(73, 21);
+            lblTitulMonedas.Size = new Size(74, 21);
             lblTitulMonedas.TabIndex = 8;
-            lblTitulMonedas.Text = "Monedes";
+            lblTitulMonedas.Text = "Monedas";
             // 
             // PanelSesiones
             // 
@@ -216,7 +230,7 @@
             PanelSesiones.Controls.Add(pictureBox1);
             PanelSesiones.Controls.Add(lblValorSesions);
             PanelSesiones.Controls.Add(lblTitulSessions);
-            PanelSesiones.Location = new Point(413, 100);
+            PanelSesiones.Location = new Point(515, 118);
             PanelSesiones.Name = "PanelSesiones";
             PanelSesiones.Padding = new Padding(12);
             PanelSesiones.Size = new Size(282, 130);
@@ -229,9 +243,9 @@
             lblSessionsDesc.ForeColor = Color.FromArgb(152, 162, 179);
             lblSessionsDesc.Location = new Point(15, 105);
             lblSessionsDesc.Name = "lblSessionsDesc";
-            lblSessionsDesc.Size = new Size(169, 18);
+            lblSessionsDesc.Size = new Size(166, 18);
             lblSessionsDesc.TabIndex = 7;
-            lblSessionsDesc.Text = "Total de sessions realitzades";
+            lblSessionsDesc.Text = "Total de sesiones realizadas";
             // 
             // pictureBox1
             // 
@@ -262,9 +276,9 @@
             lblTitulSessions.ForeColor = Color.FromArgb(102, 112, 133);
             lblTitulSessions.Location = new Point(15, 18);
             lblTitulSessions.Name = "lblTitulSessions";
-            lblTitulSessions.Size = new Size(70, 21);
+            lblTitulSessions.Size = new Size(71, 21);
             lblTitulSessions.TabIndex = 4;
-            lblTitulSessions.Text = "Sessions";
+            lblTitulSessions.Text = "Sesiones";
             // 
             // PanelAlumnos
             // 
@@ -273,7 +287,7 @@
             PanelAlumnos.Controls.Add(LblValorAlumnos);
             PanelAlumnos.Controls.Add(PicAlumnos);
             PanelAlumnos.Controls.Add(LblTituloAlumnos);
-            PanelAlumnos.Location = new Point(60, 100);
+            PanelAlumnos.Location = new Point(60, 118);
             PanelAlumnos.Name = "PanelAlumnos";
             PanelAlumnos.Padding = new Padding(12);
             PanelAlumnos.Size = new Size(282, 130);
@@ -286,9 +300,9 @@
             LblDescripcionAlumnos.ForeColor = Color.FromArgb(152, 162, 179);
             LblDescripcionAlumnos.Location = new Point(20, 105);
             LblDescripcionAlumnos.Name = "LblDescripcionAlumnos";
-            LblDescripcionAlumnos.Size = new Size(149, 18);
+            LblDescripcionAlumnos.Size = new Size(170, 18);
             LblDescripcionAlumnos.TabIndex = 3;
-            LblDescripcionAlumnos.Text = "Total d'alumnes registrats";
+            LblDescripcionAlumnos.Text = "Total de alumnos registrados";
             // 
             // LblValorAlumnos
             // 
@@ -319,9 +333,9 @@
             LblTituloAlumnos.ForeColor = Color.FromArgb(102, 112, 133);
             LblTituloAlumnos.Location = new Point(20, 18);
             LblTituloAlumnos.Name = "LblTituloAlumnos";
-            LblTituloAlumnos.Size = new Size(68, 21);
+            LblTituloAlumnos.Size = new Size(69, 21);
             LblTituloAlumnos.TabIndex = 0;
-            LblTituloAlumnos.Text = "Alumnes";
+            LblTituloAlumnos.Text = "Alumnos";
             // 
             // LblDescripcion
             // 
@@ -345,35 +359,50 @@
             LblBienvenida.TabIndex = 0;
             LblBienvenida.Text = "Buenos días,";
             // 
-            // LblTituloGrafico
+            // PartidasTitol
             // 
-            LblTituloGrafico.AutoSize = true;
-            LblTituloGrafico.Font = new Font("Comfortaa", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblTituloGrafico.ForeColor = Color.FromArgb(16, 24, 40);
-            LblTituloGrafico.Location = new Point(20, 18);
-            LblTituloGrafico.Name = "LblTituloGrafico";
-            LblTituloGrafico.Size = new Size(157, 21);
-            LblTituloGrafico.TabIndex = 0;
-            LblTituloGrafico.Text = "Actividad de partidas";
+            PartidasTitol.AutoSize = true;
+            PartidasTitol.Font = new Font("Comfortaa", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PartidasTitol.ForeColor = Color.FromArgb(102, 112, 133);
+            PartidasTitol.Location = new Point(23, 23);
+            PartidasTitol.Name = "PartidasTitol";
+            PartidasTitol.Size = new Size(133, 21);
+            PartidasTitol.TabIndex = 0;
+            PartidasTitol.Text = "Partidas recientes";
             // 
-            // LblSubtituloGrafico
+            // PartidasDesc
             // 
-            LblSubtituloGrafico.AutoSize = true;
-            LblSubtituloGrafico.Font = new Font("Comfortaa", 8.249999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblSubtituloGrafico.ForeColor = Color.FromArgb(102, 112, 133);
-            LblSubtituloGrafico.Location = new Point(20, 48);
-            LblSubtituloGrafico.Name = "LblSubtituloGrafico";
-            LblSubtituloGrafico.Size = new Size(277, 18);
-            LblSubtituloGrafico.TabIndex = 1;
-            LblSubtituloGrafico.Text = "Sesiones registradas durante los últimos 18 días";
+            PartidasDesc.AutoSize = true;
+            PartidasDesc.Font = new Font("Comfortaa", 8.249999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PartidasDesc.ForeColor = Color.FromArgb(152, 162, 179);
+            PartidasDesc.Location = new Point(29, 47);
+            PartidasDesc.Name = "PartidasDesc";
+            PartidasDesc.Size = new Size(264, 18);
+            PartidasDesc.TabIndex = 4;
+            PartidasDesc.Text = "Última actividad registrada en Farmer Clicker";
+            PartidasDesc.Click += label1_Click;
             // 
-            // PanelGraficoLineas
+            // ProgresoDesc
             // 
-            PanelGraficoLineas.BackColor = Color.White;
-            PanelGraficoLineas.Location = new Point(20, 85);
-            PanelGraficoLineas.Name = "PanelGraficoLineas";
-            PanelGraficoLineas.Size = new Size(989, 180);
-            PanelGraficoLineas.TabIndex = 2;
+            ProgresoDesc.AutoSize = true;
+            ProgresoDesc.Font = new Font("Comfortaa", 8.249999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ProgresoDesc.ForeColor = Color.FromArgb(152, 162, 179);
+            ProgresoDesc.Location = new Point(21, 47);
+            ProgresoDesc.Name = "ProgresoDesc";
+            ProgresoDesc.Size = new Size(201, 18);
+            ProgresoDesc.TabIndex = 6;
+            ProgresoDesc.Text = "Distribución actual de los alumnos";
+            // 
+            // ProgresoTitol
+            // 
+            ProgresoTitol.AutoSize = true;
+            ProgresoTitol.Font = new Font("Comfortaa", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ProgresoTitol.ForeColor = Color.FromArgb(102, 112, 133);
+            ProgresoTitol.Location = new Point(15, 23);
+            ProgresoTitol.Name = "ProgresoTitol";
+            ProgresoTitol.Size = new Size(134, 21);
+            ProgresoTitol.TabIndex = 5;
+            ProgresoTitol.Text = "Progreso por nivel";
             // 
             // UcInicio
             // 
@@ -387,8 +416,10 @@
             Size = new Size(1871, 1280);
             PanelDashboard.ResumeLayout(false);
             PanelDashboard.PerformLayout();
-            PanelGraficoActividad.ResumeLayout(false);
-            PanelGraficoActividad.PerformLayout();
+            ProgresoPorNivelPanel.ResumeLayout(false);
+            ProgresoPorNivelPanel.PerformLayout();
+            PartidasRecientes.ResumeLayout(false);
+            PartidasRecientes.PerformLayout();
             PanelDuracion.ResumeLayout(false);
             PanelDuracion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -430,9 +461,11 @@
         private PictureBox pictureBox1;
         private Label lblValorSesions;
         private Label lblTitulSessions;
-        private Controles.TarjetaDashboard PanelGraficoActividad;
-        private Label LblTituloGrafico;
-        private Label LblSubtituloGrafico;
-        private Panel PanelGraficoLineas;
+        private Controles.TarjetaDashboard PartidasRecientes;
+        private Controles.TarjetaDashboard ProgresoPorNivelPanel;
+        private Label PartidasTitol;
+        private Label PartidasDesc;
+        private Label ProgresoDesc;
+        private Label ProgresoTitol;
     }
 }
