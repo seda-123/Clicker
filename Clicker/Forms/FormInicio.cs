@@ -15,27 +15,62 @@ namespace Clicker
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
-            CargarInicio();
+            MostrarUserControl(new UcInicio());
         }
 
         private void FormInicio_Load(object sender, EventArgs e)
         {
 
         }
-        private void CargarInicio()
-        {
-            PanelContenido.Controls.Clear();
 
-            UcInicio inicio = new UcInicio();
-
-            inicio.Dock = DockStyle.Fill;
-
-            PanelContenido.Controls.Add(inicio);
-        }
 
         private void PanelContenido_Paint(object sender, PaintEventArgs e)
         {
 
         }
+        private void MostrarUserControl(UserControl uc)
+        {
+            PanelContenido.Controls.Clear();
+
+            uc.Dock = DockStyle.Fill;
+
+            PanelContenido.Controls.Add(uc);
+        }
+
+        private void usuarios_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new UcUsuarios());
+        }
+
+        private void inicio_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new UcInicio());
+        }
+
+        private void jugadores_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new UcJugadores());
+        }
+
+        private void Farmer_Clicker_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new UcFarmerClicker());
+        }
+
+        private void Historial_partidas_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new UcHistorial());
+        }
+
+        private void Metricas_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new UcMetricas());
+        }
+
+        private void configuracion_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new UcConfiguracion());
+        }
     }
 }
+
