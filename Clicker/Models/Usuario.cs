@@ -1,5 +1,4 @@
-﻿
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Clicker.Models
 {
@@ -10,5 +9,8 @@ namespace Clicker.Models
 
         [JsonPropertyName("user_name")]
         public string UserName { get; set; } = "";
+
+        [JsonPropertyName("rol")]
+        public string Rol { get; set; } = "";
     }
 }

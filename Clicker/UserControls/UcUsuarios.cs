@@ -31,57 +31,34 @@ namespace Clicker.UserControls
                 // Configuramos la tabla
                 ConfigurarTabla();
 
-                // Recorremos todos los usuarios
+                // Recorremos los usuarios
                 foreach (Usuario usuario in usuarios)
                 {
+                    string fechaCreacion = "—";
+
                     try
                     {
                         // Obtenemos la partida del usuario
                         Game partida =
                             await gameService.ObtenerPartidaAsync(usuario.IdUser);
 
-                        if (partida == null)
+                        if (partida != null)
                         {
-                            dgvUsuarios.Rows.Add(
-                                usuario.UserName,
-                                "—",
-                                "—",
-                                "—",
-                                "Sin partida"
-                            );
-
-                            continue;
+                            fechaCreacion =
+                                partida.StartDate.ToString("dd/MM/yyyy");
                         }
-
-                        // Calculamos el tiempo jugado
-                        DateTime fechaFinal = partida.FinishDate ?? DateTime.Now;
-
-                        TimeSpan tiempoJugado =
-                            fechaFinal - partida.StartDate;
-
-                        string tiempo =
-                            $"{(int)tiempoJugado.TotalHours} h {tiempoJugado.Minutes} min";
-
-                        // Añadimos los datos a la tabla
-                        dgvUsuarios.Rows.Add(
-                            usuario.UserName,
-                            partida.StartDate.ToString("dd/MM/yyyy"),
-                            partida.TotalMoney.ToString("N0") + " €",
-                            tiempo,
-                            partida.Status ? "Activo" : "Inactivo"
-                        );
                     }
                     catch (HttpRequestException)
                     {
-                        // Si el usuario no tiene partida disponible
-                        dgvUsuarios.Rows.Add(
-                            usuario.UserName,
-                            "—",
-                            "—",
-                            "—",
-                            "Sin partida"
-                        );
+                        // Si no tiene partida, dejamos la fecha vacía
                     }
+
+                    // Añadimos los datos a la tabla
+                    dgvUsuarios.Rows.Add(
+                        usuario.UserName,
+                        fechaCreacion,
+                        usuario.Rol
+                    );
                 }
             }
             catch (Exception ex)
@@ -105,6 +82,7 @@ namespace Clicker.UserControls
             dgvUsuarios.AllowUserToDeleteRows = false;
             dgvUsuarios.ReadOnly = true;
             dgvUsuarios.RowHeadersVisible = false;
+
             dgvUsuarios.SelectionMode =
                 DataGridViewSelectionMode.FullRowSelect;
 
@@ -125,25 +103,11 @@ namespace Clicker.UserControls
                 HeaderText = "FECHA DE CREACIÓN"
             });
 
-            // MONEDAS
+            // ROL
             dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
             {
-                Name = "colMonedas",
-                HeaderText = "MONEDAS"
-            });
-
-            // TIEMPO JUGADO
-            dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "colTiempo",
-                HeaderText = "TIEMPO JUGADO"
-            });
-
-            // ESTADO
-            dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "colEstado",
-                HeaderText = "ESTADO"
+                Name = "colRol",
+                HeaderText = "ROL"
             });
         }
 
@@ -163,6 +127,13 @@ namespace Clicker.UserControls
         private void label1_Click_1(object sender, EventArgs e)
         {
         }
+
+        private void dgvUsuarios_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+        }
     }
 }
-//
