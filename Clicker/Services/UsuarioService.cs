@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Clicker.Models;
@@ -25,10 +24,10 @@ namespace Clicker.Services
                 return new List<Usuario>();
             }
 
-            // Eliminamos los espacios sobrantes
             foreach (var usuario in usuarios)
             {
                 usuario.UserName = usuario.UserName.Trim();
+                usuario.Rol = usuario.Rol.Trim();
             }
 
             return usuarios;

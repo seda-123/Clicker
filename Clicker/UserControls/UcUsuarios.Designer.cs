@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            label1 = new Label();
-            label2 = new Label();
             panel2 = new Panel();
             dgvUsuarios = new DataGridView();
+            label2 = new Label();
+            label1 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
@@ -47,36 +47,16 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(730, 643);
+            panel1.Size = new Size(1423, 643);
             panel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Comfortaa", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(28, 21);
-            label1.Name = "label1";
-            label1.Size = new Size(147, 44);
-            label1.TabIndex = 0;
-            label1.Text = "Usuarios";
-            label1.Click += label1_Click_1;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Comfortaa Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(28, 75);
-            label2.Name = "label2";
-            label2.Size = new Size(418, 21);
-            label2.TabIndex = 1;
-            label2.Text = "Gestiona las cuentas y permisos de acceso a la plataforma.";
+            panel1.Paint += panel1_Paint;
             // 
             // panel2
             // 
             panel2.Controls.Add(dgvUsuarios);
             panel2.Location = new Point(34, 155);
             panel2.Name = "panel2";
-            panel2.Size = new Size(666, 460);
+            panel2.Size = new Size(1348, 460);
             panel2.TabIndex = 2;
             // 
             // dgvUsuarios
@@ -93,8 +73,30 @@
             dgvUsuarios.ReadOnly = true;
             dgvUsuarios.RowHeadersVisible = false;
             dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvUsuarios.Size = new Size(666, 460);
+            dgvUsuarios.Size = new Size(1348, 460);
             dgvUsuarios.TabIndex = 0;
+            dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick_1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Comfortaa Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(28, 75);
+            label2.Name = "label2";
+            label2.Size = new Size(418, 21);
+            label2.TabIndex = 1;
+            label2.Text = "Gestiona las cuentas y permisos de acceso a la plataforma.";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Comfortaa", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(28, 21);
+            label1.Name = "label1";
+            label1.Size = new Size(147, 44);
+            label1.TabIndex = 0;
+            label1.Text = "Usuarios";
+            label1.Click += label1_Click_1;
             // 
             // UcUsuarios
             // 
@@ -102,7 +104,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
             Name = "UcUsuarios";
-            Size = new Size(730, 643);
+            Size = new Size(1423, 643);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
