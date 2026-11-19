@@ -31,7 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcInicio));
             PanelDashboard = new Panel();
             ProgresoPorNivelPanel = new Clicker.Controles.TarjetaDashboard();
+            ProgresoDesc = new Label();
+            ProgresoTitol = new Label();
             PartidasRecientes = new Clicker.Controles.TarjetaDashboard();
+            PartidasDesc = new Label();
+            PartidasTitol = new Label();
             PanelDuracion = new Clicker.Controles.TarjetaDashboard();
             lblDescripcioDurada = new Label();
             pictureBox3 = new PictureBox();
@@ -54,10 +58,6 @@
             LblTituloAlumnos = new Label();
             LblDescripcion = new Label();
             LblBienvenida = new Label();
-            PartidasTitol = new Label();
-            PartidasDesc = new Label();
-            ProgresoDesc = new Label();
-            ProgresoTitol = new Label();
             PanelDashboard.SuspendLayout();
             ProgresoPorNivelPanel.SuspendLayout();
             PartidasRecientes.SuspendLayout();
@@ -98,6 +98,28 @@
             ProgresoPorNivelPanel.Size = new Size(549, 429);
             ProgresoPorNivelPanel.TabIndex = 9;
             // 
+            // ProgresoDesc
+            // 
+            ProgresoDesc.AutoSize = true;
+            ProgresoDesc.Font = new Font("Comfortaa", 8.249999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ProgresoDesc.ForeColor = Color.FromArgb(152, 162, 179);
+            ProgresoDesc.Location = new Point(21, 47);
+            ProgresoDesc.Name = "ProgresoDesc";
+            ProgresoDesc.Size = new Size(201, 18);
+            ProgresoDesc.TabIndex = 6;
+            ProgresoDesc.Text = "Distribución actual de los alumnos";
+            // 
+            // ProgresoTitol
+            // 
+            ProgresoTitol.AutoSize = true;
+            ProgresoTitol.Font = new Font("Comfortaa", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ProgresoTitol.ForeColor = Color.FromArgb(102, 112, 133);
+            ProgresoTitol.Location = new Point(15, 23);
+            ProgresoTitol.Name = "ProgresoTitol";
+            ProgresoTitol.Size = new Size(134, 21);
+            ProgresoTitol.TabIndex = 5;
+            ProgresoTitol.Text = "Progreso por nivel";
+            // 
             // PartidasRecientes
             // 
             PartidasRecientes.BackColor = Color.Transparent;
@@ -108,6 +130,29 @@
             PartidasRecientes.Padding = new Padding(12);
             PartidasRecientes.Size = new Size(920, 429);
             PartidasRecientes.TabIndex = 8;
+            // 
+            // PartidasDesc
+            // 
+            PartidasDesc.AutoSize = true;
+            PartidasDesc.Font = new Font("Comfortaa", 8.249999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PartidasDesc.ForeColor = Color.FromArgb(152, 162, 179);
+            PartidasDesc.Location = new Point(29, 47);
+            PartidasDesc.Name = "PartidasDesc";
+            PartidasDesc.Size = new Size(264, 18);
+            PartidasDesc.TabIndex = 4;
+            PartidasDesc.Text = "Última actividad registrada en Farmer Clicker";
+            PartidasDesc.Click += label1_Click;
+            // 
+            // PartidasTitol
+            // 
+            PartidasTitol.AutoSize = true;
+            PartidasTitol.Font = new Font("Comfortaa", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PartidasTitol.ForeColor = Color.FromArgb(102, 112, 133);
+            PartidasTitol.Location = new Point(23, 23);
+            PartidasTitol.Name = "PartidasTitol";
+            PartidasTitol.Size = new Size(133, 21);
+            PartidasTitol.TabIndex = 0;
+            PartidasTitol.Text = "Partidas recientes";
             // 
             // PanelDuracion
             // 
@@ -358,51 +403,6 @@
             LblBienvenida.Size = new Size(141, 30);
             LblBienvenida.TabIndex = 0;
             LblBienvenida.Text = "Buenos días,";
-            // 
-            // PartidasTitol
-            // 
-            PartidasTitol.AutoSize = true;
-            PartidasTitol.Font = new Font("Comfortaa", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            PartidasTitol.ForeColor = Color.FromArgb(102, 112, 133);
-            PartidasTitol.Location = new Point(23, 23);
-            PartidasTitol.Name = "PartidasTitol";
-            PartidasTitol.Size = new Size(133, 21);
-            PartidasTitol.TabIndex = 0;
-            PartidasTitol.Text = "Partidas recientes";
-            // 
-            // PartidasDesc
-            // 
-            PartidasDesc.AutoSize = true;
-            PartidasDesc.Font = new Font("Comfortaa", 8.249999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            PartidasDesc.ForeColor = Color.FromArgb(152, 162, 179);
-            PartidasDesc.Location = new Point(29, 47);
-            PartidasDesc.Name = "PartidasDesc";
-            PartidasDesc.Size = new Size(264, 18);
-            PartidasDesc.TabIndex = 4;
-            PartidasDesc.Text = "Última actividad registrada en Farmer Clicker";
-            PartidasDesc.Click += label1_Click;
-            // 
-            // ProgresoDesc
-            // 
-            ProgresoDesc.AutoSize = true;
-            ProgresoDesc.Font = new Font("Comfortaa", 8.249999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ProgresoDesc.ForeColor = Color.FromArgb(152, 162, 179);
-            ProgresoDesc.Location = new Point(21, 47);
-            ProgresoDesc.Name = "ProgresoDesc";
-            ProgresoDesc.Size = new Size(201, 18);
-            ProgresoDesc.TabIndex = 6;
-            ProgresoDesc.Text = "Distribución actual de los alumnos";
-            // 
-            // ProgresoTitol
-            // 
-            ProgresoTitol.AutoSize = true;
-            ProgresoTitol.Font = new Font("Comfortaa", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ProgresoTitol.ForeColor = Color.FromArgb(102, 112, 133);
-            ProgresoTitol.Location = new Point(15, 23);
-            ProgresoTitol.Name = "ProgresoTitol";
-            ProgresoTitol.Size = new Size(134, 21);
-            ProgresoTitol.TabIndex = 5;
-            ProgresoTitol.Text = "Progreso por nivel";
             // 
             // UcInicio
             // 
