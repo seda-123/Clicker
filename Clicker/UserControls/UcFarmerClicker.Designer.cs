@@ -28,10 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            PanelFarmer = new Panel();
+            SuspendLayout();
+            // 
+            // PanelFarmer
+            // 
+            PanelFarmer.Dock = DockStyle.Fill;
+            PanelFarmer.Location = new Point(0, 0);
+            PanelFarmer.Name = "PanelFarmer";
+            PanelFarmer.Size = new Size(1776, 1118);
+            PanelFarmer.TabIndex = 0;
+            // 
+            // UcFarmerClicker
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(PanelFarmer);
+            Name = "UcFarmerClicker";
+            Size = new Size(1776, 1118);
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel PanelFarmer;
     }
 }
