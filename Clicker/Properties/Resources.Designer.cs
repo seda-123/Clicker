@@ -83,6 +83,16 @@ namespace Clicker.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap farmerclik {
+            get {
+                object obj = ResourceManager.GetObject("farmerclik", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap monedas {
             get {
                 object obj = ResourceManager.GetObject("monedas", resourceCulture);

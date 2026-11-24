@@ -62,11 +62,6 @@ namespace Clicker
             MostrarUserControl(new UcHistorial());
         }
 
-        private void Metricas_Click(object sender, EventArgs e)
-        {
-            MostrarUserControl(new UcMetricas());
-        }
-
         private void configuracion_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new UcConfiguracion());
