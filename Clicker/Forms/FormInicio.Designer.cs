@@ -34,7 +34,6 @@
             PanelUsuari = new Panel();
             Linea = new Label();
             configuracion = new Button();
-            Metricas = new Button();
             Historial_partidas = new Button();
             Farmer_Clicker = new Button();
             jugadores = new Button();
@@ -74,20 +73,19 @@
             Botons.Controls.Add(PanelUsuari);
             Botons.Controls.Add(Linea);
             Botons.Controls.Add(configuracion);
-            Botons.Controls.Add(Metricas);
             Botons.Controls.Add(Historial_partidas);
             Botons.Controls.Add(Farmer_Clicker);
             Botons.Controls.Add(jugadores);
             Botons.Controls.Add(usuarios);
             Botons.Controls.Add(inicio);
-            Botons.Location = new Point(16, 112);
+            Botons.Location = new Point(16, 137);
             Botons.Name = "Botons";
-            Botons.Size = new Size(174, 715);
+            Botons.Size = new Size(174, 690);
             Botons.TabIndex = 1;
             // 
             // PanelUsuari
             // 
-            PanelUsuari.Location = new Point(9, 583);
+            PanelUsuari.Location = new Point(11, 659);
             PanelUsuari.Name = "PanelUsuari";
             PanelUsuari.Size = new Size(145, 117);
             PanelUsuari.TabIndex = 7;
@@ -96,7 +94,7 @@
             // 
             Linea.AutoSize = true;
             Linea.ForeColor = Color.FromArgb(190, 205, 230);
-            Linea.Location = new Point(-3, 551);
+            Linea.Location = new Point(0, 603);
             Linea.Name = "Linea";
             Linea.Size = new Size(177, 15);
             Linea.TabIndex = 1;
@@ -110,7 +108,7 @@
             configuracion.FlatStyle = FlatStyle.Flat;
             configuracion.Font = new Font("Comfortaa", 11.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             configuracion.ForeColor = Color.FromArgb(190, 205, 230);
-            configuracion.Location = new Point(3, 492);
+            configuracion.Location = new Point(3, 535);
             configuracion.Name = "configuracion";
             configuracion.Size = new Size(167, 36);
             configuracion.TabIndex = 6;
@@ -118,23 +116,6 @@
             configuracion.TextAlign = ContentAlignment.MiddleLeft;
             configuracion.UseVisualStyleBackColor = true;
             configuracion.Click += configuracion_Click;
-            // 
-            // Metricas
-            // 
-            Metricas.Cursor = Cursors.Hand;
-            Metricas.FlatAppearance.BorderSize = 0;
-            Metricas.FlatAppearance.MouseOverBackColor = Color.FromArgb(15, 43, 100);
-            Metricas.FlatStyle = FlatStyle.Flat;
-            Metricas.Font = new Font("Comfortaa", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Metricas.ForeColor = Color.FromArgb(190, 205, 230);
-            Metricas.Location = new Point(3, 431);
-            Metricas.Name = "Metricas";
-            Metricas.Size = new Size(167, 36);
-            Metricas.TabIndex = 5;
-            Metricas.Text = "▥ Métricas";
-            Metricas.TextAlign = ContentAlignment.MiddleLeft;
-            Metricas.UseVisualStyleBackColor = true;
-            Metricas.Click += Metricas_Click;
             // 
             // Historial_partidas
             // 
@@ -144,7 +125,7 @@
             Historial_partidas.FlatStyle = FlatStyle.Flat;
             Historial_partidas.Font = new Font("Comfortaa", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Historial_partidas.ForeColor = Color.FromArgb(190, 205, 230);
-            Historial_partidas.Location = new Point(4, 351);
+            Historial_partidas.Location = new Point(4, 418);
             Historial_partidas.Name = "Historial_partidas";
             Historial_partidas.Size = new Size(167, 60);
             Historial_partidas.TabIndex = 4;
@@ -161,7 +142,7 @@
             Farmer_Clicker.FlatStyle = FlatStyle.Flat;
             Farmer_Clicker.Font = new Font("Comfortaa", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Farmer_Clicker.ForeColor = Color.FromArgb(190, 205, 230);
-            Farmer_Clicker.Location = new Point(4, 288);
+            Farmer_Clicker.Location = new Point(3, 347);
             Farmer_Clicker.Name = "Farmer_Clicker";
             Farmer_Clicker.Size = new Size(167, 36);
             Farmer_Clicker.TabIndex = 3;
@@ -178,7 +159,7 @@
             jugadores.FlatStyle = FlatStyle.Flat;
             jugadores.Font = new Font("Comfortaa", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             jugadores.ForeColor = Color.FromArgb(190, 205, 230);
-            jugadores.Location = new Point(4, 224);
+            jugadores.Location = new Point(4, 262);
             jugadores.Name = "jugadores";
             jugadores.Size = new Size(167, 36);
             jugadores.TabIndex = 2;
@@ -195,7 +176,7 @@
             usuarios.FlatStyle = FlatStyle.Flat;
             usuarios.Font = new Font("Comfortaa", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             usuarios.ForeColor = Color.FromArgb(190, 205, 230);
-            usuarios.Location = new Point(4, 153);
+            usuarios.Location = new Point(4, 181);
             usuarios.Name = "usuarios";
             usuarios.Size = new Size(167, 36);
             usuarios.TabIndex = 1;
@@ -213,7 +194,7 @@
             inicio.FlatStyle = FlatStyle.Flat;
             inicio.Font = new Font("Comfortaa", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             inicio.ForeColor = Color.FromArgb(190, 205, 230);
-            inicio.Location = new Point(4, 90);
+            inicio.Location = new Point(3, 98);
             inicio.Name = "inicio";
             inicio.Size = new Size(167, 36);
             inicio.TabIndex = 0;
@@ -228,7 +209,7 @@
             PanelLogo.Controls.Add(logo);
             PanelLogo.Controls.Add(LblSubLogo);
             PanelLogo.Controls.Add(LblLogo);
-            PanelLogo.Location = new Point(17, 43);
+            PanelLogo.Location = new Point(19, 68);
             PanelLogo.Name = "PanelLogo";
             PanelLogo.Size = new Size(174, 63);
             PanelLogo.TabIndex = 0;
@@ -293,7 +274,6 @@
         private Panel PanelUsuari;
         private Label Linea;
         private Button configuracion;
-        private Button Metricas;
         private Button Historial_partidas;
         private Button Farmer_Clicker;
         private Button jugadores;
