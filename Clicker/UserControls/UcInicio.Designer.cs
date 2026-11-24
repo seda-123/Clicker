@@ -34,24 +34,29 @@
             ProgresoDesc = new Label();
             ProgresoTitol = new Label();
             PartidasRecientes = new Clicker.Controles.TarjetaDashboard();
+            dgvPartidasRecientes = new DataGridView();
             PartidasDesc = new Label();
             PartidasTitol = new Label();
             PanelDuracion = new Clicker.Controles.TarjetaDashboard();
+            lblTiempoTotal = new Label();
             lblDescripcioDurada = new Label();
             pictureBox3 = new PictureBox();
             LblValorDuracion = new Label();
             lbltitolDurada = new Label();
             PanelMonedas = new Clicker.Controles.TarjetaDashboard();
+            lblMonedas = new Label();
             lbldescripcioMonedes = new Label();
             pictureBox2 = new PictureBox();
             LblValorMonedas = new Label();
             lblTitulMonedas = new Label();
             PanelSesiones = new Clicker.Controles.TarjetaDashboard();
+            lblSesiones = new Label();
             lblSessionsDesc = new Label();
             pictureBox1 = new PictureBox();
             lblValorSesions = new Label();
             lblTitulSessions = new Label();
             PanelAlumnos = new Clicker.Controles.TarjetaDashboard();
+            lblAlumnos = new Label();
             LblDescripcionAlumnos = new Label();
             LblValorAlumnos = new Label();
             PicAlumnos = new PictureBox();
@@ -61,6 +66,7 @@
             PanelDashboard.SuspendLayout();
             ProgresoPorNivelPanel.SuspendLayout();
             PartidasRecientes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPartidasRecientes).BeginInit();
             PanelDuracion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             PanelMonedas.SuspendLayout();
@@ -123,6 +129,7 @@
             // PartidasRecientes
             // 
             PartidasRecientes.BackColor = Color.Transparent;
+            PartidasRecientes.Controls.Add(dgvPartidasRecientes);
             PartidasRecientes.Controls.Add(PartidasDesc);
             PartidasRecientes.Controls.Add(PartidasTitol);
             PartidasRecientes.Location = new Point(60, 403);
@@ -130,6 +137,17 @@
             PartidasRecientes.Padding = new Padding(12);
             PartidasRecientes.Size = new Size(920, 429);
             PartidasRecientes.TabIndex = 8;
+            PartidasRecientes.Paint += PartidasRecientes_Paint;
+            // 
+            // dgvPartidasRecientes
+            // 
+            dgvPartidasRecientes.BackgroundColor = Color.White;
+            dgvPartidasRecientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPartidasRecientes.Dock = DockStyle.Bottom;
+            dgvPartidasRecientes.Location = new Point(12, 83);
+            dgvPartidasRecientes.Name = "dgvPartidasRecientes";
+            dgvPartidasRecientes.Size = new Size(896, 334);
+            dgvPartidasRecientes.TabIndex = 5;
             // 
             // PartidasDesc
             // 
@@ -157,6 +175,7 @@
             // PanelDuracion
             // 
             PanelDuracion.BackColor = Color.Transparent;
+            PanelDuracion.Controls.Add(lblTiempoTotal);
             PanelDuracion.Controls.Add(lblDescripcioDurada);
             PanelDuracion.Controls.Add(pictureBox3);
             PanelDuracion.Controls.Add(LblValorDuracion);
@@ -166,6 +185,16 @@
             PanelDuracion.Padding = new Padding(12);
             PanelDuracion.Size = new Size(282, 130);
             PanelDuracion.TabIndex = 7;
+            // 
+            // lblTiempoTotal
+            // 
+            lblTiempoTotal.AutoSize = true;
+            lblTiempoTotal.Font = new Font("Comfortaa", 15.7499981F);
+            lblTiempoTotal.Location = new Point(59, 57);
+            lblTiempoTotal.Name = "lblTiempoTotal";
+            lblTiempoTotal.Size = new Size(82, 34);
+            lblTiempoTotal.TabIndex = 16;
+            lblTiempoTotal.Text = "label4";
             // 
             // lblDescripcioDurada
             // 
@@ -214,6 +243,7 @@
             // PanelMonedas
             // 
             PanelMonedas.BackColor = Color.Transparent;
+            PanelMonedas.Controls.Add(lblMonedas);
             PanelMonedas.Controls.Add(lbldescripcioMonedes);
             PanelMonedas.Controls.Add(pictureBox2);
             PanelMonedas.Controls.Add(LblValorMonedas);
@@ -223,6 +253,16 @@
             PanelMonedas.Padding = new Padding(12);
             PanelMonedas.Size = new Size(282, 130);
             PanelMonedas.TabIndex = 6;
+            // 
+            // lblMonedas
+            // 
+            lblMonedas.AutoSize = true;
+            lblMonedas.Font = new Font("Comfortaa", 15.7499981F);
+            lblMonedas.Location = new Point(59, 57);
+            lblMonedas.Name = "lblMonedas";
+            lblMonedas.Size = new Size(80, 34);
+            lblMonedas.TabIndex = 12;
+            lblMonedas.Text = "label3";
             // 
             // lbldescripcioMonedes
             // 
@@ -271,6 +311,7 @@
             // PanelSesiones
             // 
             PanelSesiones.BackColor = Color.Transparent;
+            PanelSesiones.Controls.Add(lblSesiones);
             PanelSesiones.Controls.Add(lblSessionsDesc);
             PanelSesiones.Controls.Add(pictureBox1);
             PanelSesiones.Controls.Add(lblValorSesions);
@@ -281,6 +322,16 @@
             PanelSesiones.Size = new Size(282, 130);
             PanelSesiones.TabIndex = 5;
             // 
+            // lblSesiones
+            // 
+            lblSesiones.AutoSize = true;
+            lblSesiones.Font = new Font("Comfortaa", 15.7499981F);
+            lblSesiones.Location = new Point(59, 57);
+            lblSesiones.Name = "lblSesiones";
+            lblSesiones.Size = new Size(80, 34);
+            lblSesiones.TabIndex = 8;
+            lblSesiones.Text = "label2";
+            // 
             // lblSessionsDesc
             // 
             lblSessionsDesc.AutoSize = true;
@@ -288,9 +339,9 @@
             lblSessionsDesc.ForeColor = Color.FromArgb(152, 162, 179);
             lblSessionsDesc.Location = new Point(15, 105);
             lblSessionsDesc.Name = "lblSessionsDesc";
-            lblSessionsDesc.Size = new Size(166, 18);
+            lblSessionsDesc.Size = new Size(165, 18);
             lblSessionsDesc.TabIndex = 7;
-            lblSessionsDesc.Text = "Total de sesiones realizadas";
+            lblSessionsDesc.Text = "Total de partidas realizadas";
             // 
             // pictureBox1
             // 
@@ -321,13 +372,15 @@
             lblTitulSessions.ForeColor = Color.FromArgb(102, 112, 133);
             lblTitulSessions.Location = new Point(15, 18);
             lblTitulSessions.Name = "lblTitulSessions";
-            lblTitulSessions.Size = new Size(71, 21);
+            lblTitulSessions.Size = new Size(67, 21);
             lblTitulSessions.TabIndex = 4;
-            lblTitulSessions.Text = "Sesiones";
+            lblTitulSessions.Text = "Partidas";
+            lblTitulSessions.Click += lblTitulSessions_Click;
             // 
             // PanelAlumnos
             // 
             PanelAlumnos.BackColor = Color.Transparent;
+            PanelAlumnos.Controls.Add(lblAlumnos);
             PanelAlumnos.Controls.Add(LblDescripcionAlumnos);
             PanelAlumnos.Controls.Add(LblValorAlumnos);
             PanelAlumnos.Controls.Add(PicAlumnos);
@@ -338,6 +391,16 @@
             PanelAlumnos.Size = new Size(282, 130);
             PanelAlumnos.TabIndex = 4;
             // 
+            // lblAlumnos
+            // 
+            lblAlumnos.AutoSize = true;
+            lblAlumnos.Font = new Font("Comfortaa", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAlumnos.Location = new Point(65, 56);
+            lblAlumnos.Name = "lblAlumnos";
+            lblAlumnos.Size = new Size(76, 34);
+            lblAlumnos.TabIndex = 4;
+            lblAlumnos.Text = "label1";
+            // 
             // LblDescripcionAlumnos
             // 
             LblDescripcionAlumnos.AutoSize = true;
@@ -345,9 +408,9 @@
             LblDescripcionAlumnos.ForeColor = Color.FromArgb(152, 162, 179);
             LblDescripcionAlumnos.Location = new Point(20, 105);
             LblDescripcionAlumnos.Name = "LblDescripcionAlumnos";
-            LblDescripcionAlumnos.Size = new Size(170, 18);
+            LblDescripcionAlumnos.Size = new Size(180, 18);
             LblDescripcionAlumnos.TabIndex = 3;
-            LblDescripcionAlumnos.Text = "Total de alumnos registrados";
+            LblDescripcionAlumnos.Text = "Total de jugadores registrados";
             // 
             // LblValorAlumnos
             // 
@@ -378,9 +441,10 @@
             LblTituloAlumnos.ForeColor = Color.FromArgb(102, 112, 133);
             LblTituloAlumnos.Location = new Point(20, 18);
             LblTituloAlumnos.Name = "LblTituloAlumnos";
-            LblTituloAlumnos.Size = new Size(69, 21);
+            LblTituloAlumnos.Size = new Size(83, 21);
             LblTituloAlumnos.TabIndex = 0;
-            LblTituloAlumnos.Text = "Alumnos";
+            LblTituloAlumnos.Text = "Jugadores";
+            LblTituloAlumnos.Click += LblTituloAlumnos_Click;
             // 
             // LblDescripcion
             // 
@@ -420,6 +484,7 @@
             ProgresoPorNivelPanel.PerformLayout();
             PartidasRecientes.ResumeLayout(false);
             PartidasRecientes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPartidasRecientes).EndInit();
             PanelDuracion.ResumeLayout(false);
             PanelDuracion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -467,5 +532,10 @@
         private Label PartidasDesc;
         private Label ProgresoDesc;
         private Label ProgresoTitol;
+        private DataGridView dgvPartidasRecientes;
+        private Label lblTiempoTotal;
+        private Label lblMonedas;
+        private Label lblSesiones;
+        private Label lblAlumnos;
     }
 }

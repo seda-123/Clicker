@@ -20,7 +20,7 @@ namespace Clicker.UserControls
             this.Load += UcUsuarios_Load;
         }
 
-        private async void UcUsuarios_Load(object sender, EventArgs e)
+        public async void UcUsuarios_Load(object sender, EventArgs e)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace Clicker.UserControls
                     }
                     catch (HttpRequestException)
                     {
-                        // Si no tiene partida, dejamos la fecha vacía
+                       
                     }
 
                     // Añadimos los datos a la tabla

@@ -14,12 +14,10 @@ namespace Clicker.Services
             api = new ApiService();
         }
 
-        public async Task<Game> ObtenerPartidaAsync(byte idUser)
+        public async Task<Game?> ObtenerPartidaAsync(byte idUser)
         {
-            var partida = await api.Cliente
-                .GetFromJsonAsync<Game>($"api/Game/{idUser}");
-
-            return partida;
+            var partidas = await api.Cliente.GetFromJsonAsync<List<Game>>($"api/Game/{idUser}"); // Ajusta la ruta a la de tu API
+            return partidas?.FirstOrDefault();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -19,7 +18,6 @@ namespace Clicker.UserControls
         public UcJugadores()
         {
             InitializeComponent();
-
             this.Load += UcJugadores_Load;
         }
 
@@ -28,21 +26,17 @@ namespace Clicker.UserControls
             try
             {
                 // Obtenemos todos los usuarios
-                List<Usuario> usuarios =
-                    await usuarioService.ObtenerUsuariosAsync();
+                List<Usuario> usuarios = await usuarioService.ObtenerUsuariosAsync();
 
                 // Filtramos únicamente los jugadores
                 List<Usuario> jugadores = usuarios
-                    .Where(u => u.Rol.Trim().Equals(
-                        "jugador",
-                        StringComparison.OrdinalIgnoreCase))
+                    .Where(u => u.Rol.Trim().Equals("jugador", StringComparison.OrdinalIgnoreCase))
                     .ToList();
 
                 // Obtenemos todos los niveles
-                List<Level> niveles =
-                    await levelService.ObtenerNivelesAsync();
+                List<Level> niveles = await levelService.ObtenerNivelesAsync();
 
-                // Configuramos la tabla
+                // Configuramos la tabla con las 6 columnas
                 ConfigurarTabla();
 
                 // Recorremos los jugadores
@@ -51,8 +45,7 @@ namespace Clicker.UserControls
                     try
                     {
                         // Obtenemos la partida del jugador
-                        Game partida =
-                            await gameService.ObtenerPartidaAsync(jugador.IdUser);
+                        Game partida = await gameService.ObtenerPartidaAsync(jugador.IdUser);
 
                         if (partida == null)
                         {
@@ -61,17 +54,15 @@ namespace Clicker.UserControls
                                 "—",
                                 "—",
                                 "—",
+                                "—",
                                 "Sin partida"
                             );
-
                             continue;
                         }
 
                         // Obtenemos los progresos de la partida
                         List<LevelProgress> progresos =
-                            await progressService.ObtenerProgresosAsync(
-                                partida.IdGame
-                            );
+                            await progressService.ObtenerProgresosAsync(partida.IdGame);
 
                         string nombreNivel = "—";
 
@@ -84,8 +75,7 @@ namespace Clicker.UserControls
 
                             // Buscamos el nivel correspondiente
                             Level nivel = niveles.FirstOrDefault(
-                                n => n.IdLevel == progresoActual.IdLevel
-                            );
+                                n => n.IdLevel == progresoActual.IdLevel);
 
                             if (nivel != null)
                             {
@@ -93,20 +83,27 @@ namespace Clicker.UserControls
                             }
                         }
 
-                        // Añadimos los datos a la tabla
+                        // Formateo de duración (ajusta "partida.Duration" al nombre real de tu propiedad en Game.cs)
+                        TimeSpan duracion = (partida.FinishDate ?? DateTime.Now) - partida.StartDate;
+                        string duracionFormateada = FormatearDuracion(duracion);
+
+                        // Añadimos los datos respetando el nuevo orden de columnas:
+                        // User | id Partida | Nivel | Monedas totales | Duración partida | Estado
                         dgvJugadores.Rows.Add(
                             jugador.UserName,
                             partida.IdGame,
-                            partida.TotalMoney.ToString("N0"),
                             nombreNivel,
+                            partida.TotalMoney.ToString("N0"),
+                            duracionFormateada,
                             partida.Status ? "Activo" : "Inactivo"
                         );
                     }
                     catch (HttpRequestException)
                     {
-                        // Si no se encuentra la partida
+                        // Si no se encuentra la partida (404, etc.)
                         dgvJugadores.Rows.Add(
                             jugador.UserName,
+                            "—",
                             "—",
                             "—",
                             "—",
@@ -137,60 +134,77 @@ namespace Clicker.UserControls
             dgvJugadores.ReadOnly = true;
             dgvJugadores.RowHeadersVisible = false;
 
-            dgvJugadores.SelectionMode =
-                DataGridViewSelectionMode.FullRowSelect;
+            dgvJugadores.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvJugadores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            dgvJugadores.AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.Fill;
-
-            // USUARIO
+            // 1. USER
             dgvJugadores.Columns.Add(new DataGridViewTextBoxColumn
             {
-                Name = "colUsuario",
-                HeaderText = "USUARIO"
+                Name = "colUser",
+                HeaderText = "User"
             });
 
-            // ID PARTIDA
+            // 2. ID PARTIDA
             dgvJugadores.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "colIdPartida",
-                HeaderText = "ID PARTIDA"
+                HeaderText = "id Partida"
             });
 
-            // MONEDAS TOTALES
-            dgvJugadores.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "colMonedas",
-                HeaderText = "MONEDAS TOTALES"
-            });
-
-            // NIVEL
+            // 3. NIVEL
             dgvJugadores.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "colNivel",
-                HeaderText = "NIVEL"
+                HeaderText = "Nivel"
             });
 
-            // ESTADO
+            // 4. MONEDAS TOTALES
+            dgvJugadores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colMonedas",
+                HeaderText = "Monedas totales"
+            });
+
+            // 5. DURACIÓN PARTIDA
+            dgvJugadores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colDuracion",
+                HeaderText = "Duración partida"
+            });
+
+            // 6. ESTADO
             dgvJugadores.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "colEstado",
-                HeaderText = "ESTADO"
+                HeaderText = "Estado"
             });
         }
 
+        /// <summary>
+        /// Método auxiliar para mostrar la duración de forma legible.
+        /// </summary>
+        private string FormatearDuracion(TimeSpan? duracion)
+        {
+            if (duracion == null) return "—";
+            return string.Format("{0:D2}:{1:D2}:{2:D2}",
+                (int)duracion.Value.TotalHours,
+                duracion.Value.Minutes,
+                duracion.Value.Seconds);
+        }
+
+        // Sobrecarga por si la duración en tu modelo Game viene en segundos (int o double)
+        private string FormatearDuracion(double segundosTotales)
+        {
+            TimeSpan t = TimeSpan.FromSeconds(segundosTotales);
+            return string.Format("{0:D2}:{1:D2}:{2:D2}",
+                (int)t.TotalHours,
+                t.Minutes,
+                t.Seconds);
+        }
+
         // Eventos generados por el Designer
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void DescriptionLabel_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void dgvJugadores_CellContentClick(
-            object sender, DataGridViewCellEventArgs e)
-        {
-        }
+        private void label1_Click(object sender, EventArgs e) { }
+        private void DescriptionLabel_Click(object sender, EventArgs e) { }
+        private void dgvJugadores_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
     }
 }

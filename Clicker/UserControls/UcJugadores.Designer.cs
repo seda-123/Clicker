@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            LblTitle = new Label();
-            LblDescription = new Label();
             panel2 = new Panel();
             dgvJugadores = new DataGridView();
+            LblDescription = new Label();
+            LblTitle = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvJugadores).BeginInit();
@@ -46,29 +46,8 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1096, 639);
+            panel1.Size = new Size(1486, 872);
             panel1.TabIndex = 0;
-            // 
-            // LblTitle
-            // 
-            LblTitle.AutoSize = true;
-            LblTitle.Font = new Font("Comfortaa", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblTitle.Location = new Point(19, 22);
-            LblTitle.Name = "LblTitle";
-            LblTitle.Size = new Size(155, 44);
-            LblTitle.TabIndex = 0;
-            LblTitle.Text = "Jugadors";
-            // 
-            // LblDescription
-            // 
-            LblDescription.AutoSize = true;
-            LblDescription.Font = new Font("Comfortaa Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblDescription.Location = new Point(19, 75);
-            LblDescription.Name = "LblDescription";
-            LblDescription.Size = new Size(467, 21);
-            LblDescription.TabIndex = 1;
-            LblDescription.Text = "Administra los perfiles de los alumnos que juegan a Farmer Clicker";
-            LblDescription.Click += label1_Click;
             // 
             // panel2
             // 
@@ -90,6 +69,27 @@
             dgvJugadores.TabIndex = 0;
             dgvJugadores.CellContentClick += dgvJugadores_CellContentClick;
             // 
+            // LblDescription
+            // 
+            LblDescription.AutoSize = true;
+            LblDescription.Font = new Font("Comfortaa Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblDescription.Location = new Point(19, 75);
+            LblDescription.Name = "LblDescription";
+            LblDescription.Size = new Size(467, 21);
+            LblDescription.TabIndex = 1;
+            LblDescription.Text = "Administra los perfiles de los alumnos que juegan a Farmer Clicker";
+            LblDescription.Click += label1_Click;
+            // 
+            // LblTitle
+            // 
+            LblTitle.AutoSize = true;
+            LblTitle.Font = new Font("Comfortaa", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LblTitle.Location = new Point(19, 22);
+            LblTitle.Name = "LblTitle";
+            LblTitle.Size = new Size(155, 44);
+            LblTitle.TabIndex = 0;
+            LblTitle.Text = "Jugadors";
+            // 
             // UcJugadores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -97,7 +97,7 @@
             BackColor = Color.FromArgb(240, 243, 249);
             Controls.Add(panel1);
             Name = "UcJugadores";
-            Size = new Size(1096, 639);
+            Size = new Size(1486, 872);
             Load += UcJugadores_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
