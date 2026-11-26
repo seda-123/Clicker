@@ -18,7 +18,7 @@ namespace Clicker.UserControls
         {
             InitializeComponent();
             vardiner.Text = $"{dinersInicial}€";
-            variableDinero.Text = $"{dinersInicial}€";
+            variableDinero.Text = $"{dinersInicial}-";
             SegonaMilloraDiners.Text = $"{dinersSegona}€";
             maxMoney.Text = $"{dinersSegona}+";
 

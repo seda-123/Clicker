@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label1 = new Label();
+            textBox3 = new TextBox();
             inici_sessio = new Button();
             contra = new Label();
             Nom = new Label();
@@ -36,8 +38,6 @@
             textBox1 = new TextBox();
             titol = new Label();
             logo = new Label();
-            label1 = new Label();
-            textBox3 = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -57,6 +57,25 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(390, 452);
             panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Comfortaa", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.MidnightBlue;
+            label1.Location = new Point(28, 225);
+            label1.Name = "label1";
+            label1.Size = new Size(173, 21);
+            label1.TabIndex = 10;
+            label1.Text = "Repeteix la contrasenya";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(207, 223);
+            textBox3.Name = "textBox3";
+            textBox3.PasswordChar = '·';
+            textBox3.Size = new Size(158, 23);
+            textBox3.TabIndex = 9;
             // 
             // inici_sessio
             // 
@@ -96,6 +115,7 @@
             // 
             textBox2.Location = new Point(207, 178);
             textBox2.Name = "textBox2";
+            textBox2.PasswordChar = '·';
             textBox2.Size = new Size(158, 23);
             textBox2.TabIndex = 3;
             // 
@@ -130,24 +150,6 @@
             logo.Text = "\t🎮";
             logo.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Comfortaa", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.MidnightBlue;
-            label1.Location = new Point(28, 225);
-            label1.Name = "label1";
-            label1.Size = new Size(173, 21);
-            label1.TabIndex = 10;
-            label1.Text = "Repeteix la contrasenya";
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(207, 223);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(158, 23);
-            textBox3.TabIndex = 9;
-            // 
             // registre
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -156,6 +158,7 @@
             Controls.Add(panel1);
             Name = "registre";
             Text = "Form2";
+            Load += registre_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

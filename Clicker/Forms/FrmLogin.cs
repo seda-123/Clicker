@@ -1,3 +1,5 @@
+using Clicker;
+
 namespace Clicker
 {
     public partial class inici_sesio : Form
@@ -19,6 +21,17 @@ namespace Clicker
             inici.FormClosed += (s, args) => Application.Exit();
 
             inici.Show();
+
+            this.Hide();
+        }
+
+        private void registrat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            registre registro = new registre();
+
+            registro.FormClosed += (s, args) => Application.Exit();
+
+            registro.Show();
 
             this.Hide();
         }
