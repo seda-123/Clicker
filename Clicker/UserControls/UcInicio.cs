@@ -13,8 +13,7 @@ namespace Clicker.UserControls
     {
         private UsuarioService usuarioService = new UsuarioService();
         private GameService gameService = new GameService();
-        private LevelService levelService = new LevelService();
-        private LevelProgressService progressService = new LevelProgressService();
+       
 
         public UcInicio()
         {
@@ -37,8 +36,7 @@ namespace Clicker.UserControls
                     .Where(u => u.Rol.Trim().Equals("jugador", StringComparison.OrdinalIgnoreCase))
                     .ToList();
 
-                // 2. Obtenemos todos los niveles
-                List<Level> niveles = await levelService.ObtenerNivelesAsync();
+           
 
                 // Configuramos la tabla de partidas recientes
                 ConfigurarTabla();
@@ -77,31 +75,15 @@ namespace Clicker.UserControls
                         tiempoTotalAcumulado += duracion;
 
                         // Obtenemos los progresos de la partida
-                        List<LevelProgress> progresos =
-                            await progressService.ObtenerProgresosAsync(partida.IdGame);
+                        
 
-                        string nombreNivel = "—";
-
-                        if (progresos.Count > 0)
-                        {
-                            LevelProgress progresoActual = progresos
-                                .OrderByDescending(p => p.LevelStartDate)
-                                .First();
-
-                            Level nivel = niveles.FirstOrDefault(
-                                n => n.IdLevel == progresoActual.IdLevel);
-
-                            if (nivel != null)
-                            {
-                                nombreNivel = nivel.LevelName;
-                            }
-                        }
+                       
 
                         // Añadimos la fila a la tabla
                         dgvPartidasRecientes.Rows.Add(
                             jugador.UserName,
                             partida.IdGame,
-                            nombreNivel,
+                      
                             partida.TotalMoney.ToString("N0"),
                             FormatearDuracion(duracion),
                             partida.Status ? "Activo" : "Inactivo"
