@@ -14,5 +14,10 @@ namespace Clicker
         {
             InitializeComponent();
         }
+
+        private void registre_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
