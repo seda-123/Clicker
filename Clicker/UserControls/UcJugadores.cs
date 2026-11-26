@@ -12,8 +12,7 @@ namespace Clicker.UserControls
     {
         private UsuarioService usuarioService = new UsuarioService();
         private GameService gameService = new GameService();
-        private LevelService levelService = new LevelService();
-        private LevelProgressService progressService = new LevelProgressService();
+        
 
         public UcJugadores()
         {
@@ -34,7 +33,7 @@ namespace Clicker.UserControls
                     .ToList();
 
                 // Obtenemos todos los niveles
-                List<Level> niveles = await levelService.ObtenerNivelesAsync();
+               
 
                 // Configuramos la tabla con las 6 columnas
                 ConfigurarTabla();
@@ -60,28 +59,9 @@ namespace Clicker.UserControls
                             continue;
                         }
 
-                        // Obtenemos los progresos de la partida
-                        List<LevelProgress> progresos =
-                            await progressService.ObtenerProgresosAsync(partida.IdGame);
+                      
 
-                        string nombreNivel = "—";
-
-                        if (progresos.Count > 0)
-                        {
-                            // Seleccionamos el progreso iniciado más recientemente
-                            LevelProgress progresoActual = progresos
-                                .OrderByDescending(p => p.LevelStartDate)
-                                .First();
-
-                            // Buscamos el nivel correspondiente
-                            Level nivel = niveles.FirstOrDefault(
-                                n => n.IdLevel == progresoActual.IdLevel);
-
-                            if (nivel != null)
-                            {
-                                nombreNivel = nivel.LevelName;
-                            }
-                        }
+                        
 
                         // Formateo de duración (ajusta "partida.Duration" al nombre real de tu propiedad en Game.cs)
                         TimeSpan duracion = (partida.FinishDate ?? DateTime.Now) - partida.StartDate;
@@ -92,7 +72,6 @@ namespace Clicker.UserControls
                         dgvJugadores.Rows.Add(
                             jugador.UserName,
                             partida.IdGame,
-                            nombreNivel,
                             partida.TotalMoney.ToString("N0"),
                             duracionFormateada,
                             partida.Status ? "Activo" : "Inactivo"

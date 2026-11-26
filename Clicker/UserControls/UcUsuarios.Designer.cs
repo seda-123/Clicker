@@ -56,7 +56,7 @@
             panel2.Controls.Add(dgvUsuarios);
             panel2.Location = new Point(34, 155);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1348, 460);
+            panel2.Size = new Size(691, 460);
             panel2.TabIndex = 2;
             // 
             // dgvUsuarios
@@ -73,7 +73,7 @@
             dgvUsuarios.ReadOnly = true;
             dgvUsuarios.RowHeadersVisible = false;
             dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvUsuarios.Size = new Size(1348, 460);
+            dgvUsuarios.Size = new Size(691, 460);
             dgvUsuarios.TabIndex = 0;
             dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick_1;
             // 
