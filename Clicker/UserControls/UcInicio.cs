@@ -221,5 +221,10 @@ namespace Clicker.UserControls
         {
 
         }
+
+        private void lblAlumnos_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
