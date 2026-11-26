@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcFarmerClicker));
             PanelFarmer = new Panel();
             tarjetaDashboard3 = new Clicker.Controles.TarjetaDashboard();
+            explotacion = new Label();
             maxMoney = new Label();
             lvl3 = new Label();
             label12 = new Label();
@@ -47,30 +48,32 @@
             nivel1 = new Label();
             label3 = new Label();
             PanelMonedas = new Clicker.Controles.TarjetaDashboard();
+            lblMonedas = new Label();
             fotoCoin = new PictureBox();
             lbldescripcioMonedes = new Label();
             LblValorMonedas = new Label();
             lblTitulMonedas = new Label();
             PanelSesiones = new Clicker.Controles.TarjetaDashboard();
+            lblSesiones = new Label();
             lblSessionsDesc = new Label();
             fotosesiones = new PictureBox();
             lblValorSesions = new Label();
             lblTitulSessions = new Label();
             PanelAlumnos = new Clicker.Controles.TarjetaDashboard();
+            lblAlumnos = new Label();
             LblDescripcionAlumnos = new Label();
             LblValorAlumnos = new Label();
             fotoalumnos = new PictureBox();
             LblTituloAlumnos = new Label();
             tarjetaprincipalFarmer = new Clicker.Controles.TarjetaDashboard();
             pictureBox1 = new PictureBox();
-            label1 = new Label();
+            dades3 = new Label();
             dades2 = new Label();
             dades1 = new Label();
             descripcioJoc = new Label();
             titolTarjetaFarmer = new Label();
             descripciofarmer = new Label();
             titul_farmerClicker = new Label();
-            explotacion = new Label();
             PanelFarmer.SuspendLayout();
             tarjetaDashboard3.SuspendLayout();
             tarjetaDashboard2.SuspendLayout();
@@ -115,6 +118,17 @@
             tarjetaDashboard3.Padding = new Padding(12);
             tarjetaDashboard3.Size = new Size(376, 153);
             tarjetaDashboard3.TabIndex = 15;
+            // 
+            // explotacion
+            // 
+            explotacion.AutoSize = true;
+            explotacion.Font = new Font("Comfortaa", 11.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            explotacion.ForeColor = Color.Navy;
+            explotacion.Location = new Point(22, 40);
+            explotacion.Name = "explotacion";
+            explotacion.Size = new Size(184, 24);
+            explotacion.TabIndex = 15;
+            explotacion.Text = "Explotación avanzada";
             // 
             // maxMoney
             // 
@@ -177,7 +191,7 @@
             SegonaMilloraDiners.AutoSize = true;
             SegonaMilloraDiners.Font = new Font("Comfortaa", 11.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SegonaMilloraDiners.ForeColor = Color.Navy;
-            SegonaMilloraDiners.Location = new Point(54, 84);
+            SegonaMilloraDiners.Location = new Point(82, 84);
             SegonaMilloraDiners.Name = "SegonaMilloraDiners";
             SegonaMilloraDiners.Size = new Size(25, 24);
             SegonaMilloraDiners.TabIndex = 14;
@@ -285,6 +299,7 @@
             // PanelMonedas
             // 
             PanelMonedas.BackColor = Color.Transparent;
+            PanelMonedas.Controls.Add(lblMonedas);
             PanelMonedas.Controls.Add(fotoCoin);
             PanelMonedas.Controls.Add(lbldescripcioMonedes);
             PanelMonedas.Controls.Add(LblValorMonedas);
@@ -295,10 +310,21 @@
             PanelMonedas.Size = new Size(282, 130);
             PanelMonedas.TabIndex = 10;
             // 
+            // lblMonedas
+            // 
+            lblMonedas.AutoSize = true;
+            lblMonedas.Font = new Font("Comfortaa", 15.7499981F);
+            lblMonedas.Location = new Point(59, 57);
+            lblMonedas.Name = "lblMonedas";
+            lblMonedas.Size = new Size(80, 34);
+            lblMonedas.TabIndex = 13;
+            lblMonedas.Text = "label3";
+            lblMonedas.Click += lblMonedas_Click;
+            // 
             // fotoCoin
             // 
             fotoCoin.Image = Properties.Resources.monedas;
-            fotoCoin.Location = new Point(15, 56);
+            fotoCoin.Location = new Point(15, 54);
             fotoCoin.Name = "fotoCoin";
             fotoCoin.Size = new Size(38, 35);
             fotoCoin.SizeMode = PictureBoxSizeMode.Zoom;
@@ -340,6 +366,7 @@
             // PanelSesiones
             // 
             PanelSesiones.BackColor = Color.Transparent;
+            PanelSesiones.Controls.Add(lblSesiones);
             PanelSesiones.Controls.Add(lblSessionsDesc);
             PanelSesiones.Controls.Add(fotosesiones);
             PanelSesiones.Controls.Add(lblValorSesions);
@@ -349,6 +376,17 @@
             PanelSesiones.Padding = new Padding(12);
             PanelSesiones.Size = new Size(282, 130);
             PanelSesiones.TabIndex = 9;
+            // 
+            // lblSesiones
+            // 
+            lblSesiones.AutoSize = true;
+            lblSesiones.Font = new Font("Comfortaa", 15.7499981F);
+            lblSesiones.Location = new Point(59, 57);
+            lblSesiones.Name = "lblSesiones";
+            lblSesiones.Size = new Size(80, 34);
+            lblSesiones.TabIndex = 9;
+            lblSesiones.Text = "label2";
+            lblSesiones.Click += lblSesiones_Click;
             // 
             // lblSessionsDesc
             // 
@@ -397,6 +435,7 @@
             // PanelAlumnos
             // 
             PanelAlumnos.BackColor = Color.Transparent;
+            PanelAlumnos.Controls.Add(lblAlumnos);
             PanelAlumnos.Controls.Add(LblDescripcionAlumnos);
             PanelAlumnos.Controls.Add(LblValorAlumnos);
             PanelAlumnos.Controls.Add(fotoalumnos);
@@ -406,6 +445,18 @@
             PanelAlumnos.Padding = new Padding(12);
             PanelAlumnos.Size = new Size(282, 130);
             PanelAlumnos.TabIndex = 8;
+            PanelAlumnos.Paint += PanelAlumnos_Paint;
+            // 
+            // lblAlumnos
+            // 
+            lblAlumnos.AutoSize = true;
+            lblAlumnos.Font = new Font("Comfortaa", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAlumnos.Location = new Point(58, 55);
+            lblAlumnos.Name = "lblAlumnos";
+            lblAlumnos.Size = new Size(76, 34);
+            lblAlumnos.TabIndex = 5;
+            lblAlumnos.Text = "label1";
+            lblAlumnos.Click += lblAlumnos_Click;
             // 
             // LblDescripcionAlumnos
             // 
@@ -455,7 +506,7 @@
             // 
             tarjetaprincipalFarmer.BackColor = Color.Transparent;
             tarjetaprincipalFarmer.Controls.Add(pictureBox1);
-            tarjetaprincipalFarmer.Controls.Add(label1);
+            tarjetaprincipalFarmer.Controls.Add(dades3);
             tarjetaprincipalFarmer.Controls.Add(dades2);
             tarjetaprincipalFarmer.Controls.Add(dades1);
             tarjetaprincipalFarmer.Controls.Add(descripcioJoc);
@@ -476,15 +527,15 @@
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
             // 
-            // label1
+            // dades3
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Comfortaa", 8.249999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(846, 153);
-            label1.Name = "label1";
-            label1.Size = new Size(57, 18);
-            label1.TabIndex = 8;
-            label1.Text = "niveles:3";
+            dades3.AutoSize = true;
+            dades3.Font = new Font("Comfortaa", 8.249999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dades3.Location = new Point(846, 153);
+            dades3.Name = "dades3";
+            dades3.Size = new Size(57, 18);
+            dades3.TabIndex = 8;
+            dades3.Text = "niveles:3";
             // 
             // dades2
             // 
@@ -547,17 +598,6 @@
             titul_farmerClicker.TabIndex = 2;
             titul_farmerClicker.Text = "Farmer Clicker";
             // 
-            // explotacion
-            // 
-            explotacion.AutoSize = true;
-            explotacion.Font = new Font("Comfortaa", 11.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            explotacion.ForeColor = Color.Navy;
-            explotacion.Location = new Point(22, 40);
-            explotacion.Name = "explotacion";
-            explotacion.Size = new Size(184, 24);
-            explotacion.TabIndex = 15;
-            explotacion.Text = "Explotación avanzada";
-            // 
             // UcFarmerClicker
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -597,7 +637,7 @@
         private Label titolTarjetaFarmer;
         private Label descripcioJoc;
         private PictureBox PicAlumnos;
-        private Label label1;
+        private Label dades3;
         private Label dades2;
         private Label dades1;
         private Controles.TarjetaDashboard PanelMonedas;
@@ -634,5 +674,8 @@
         private Label nivel2;
         private Label label7;
         private Label explotacion;
+        private Label lblAlumnos;
+        private Label lblSesiones;
+        private Label lblMonedas;
     }
 }

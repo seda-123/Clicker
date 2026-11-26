@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcInicio));
             PanelDashboard = new Panel();
-            ProgresoPorNivelPanel = new Clicker.Controles.TarjetaDashboard();
-            ProgresoDesc = new Label();
-            ProgresoTitol = new Label();
             PartidasRecientes = new Clicker.Controles.TarjetaDashboard();
             dgvPartidasRecientes = new DataGridView();
             PartidasDesc = new Label();
@@ -64,7 +61,6 @@
             LblDescripcion = new Label();
             LblBienvenida = new Label();
             PanelDashboard.SuspendLayout();
-            ProgresoPorNivelPanel.SuspendLayout();
             PartidasRecientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPartidasRecientes).BeginInit();
             PanelDuracion.SuspendLayout();
@@ -79,7 +75,6 @@
             // 
             // PanelDashboard
             // 
-            PanelDashboard.Controls.Add(ProgresoPorNivelPanel);
             PanelDashboard.Controls.Add(PartidasRecientes);
             PanelDashboard.Controls.Add(PanelDuracion);
             PanelDashboard.Controls.Add(PanelMonedas);
@@ -93,49 +88,16 @@
             PanelDashboard.Size = new Size(1871, 1280);
             PanelDashboard.TabIndex = 0;
             // 
-            // ProgresoPorNivelPanel
-            // 
-            ProgresoPorNivelPanel.BackColor = Color.Transparent;
-            ProgresoPorNivelPanel.Controls.Add(ProgresoDesc);
-            ProgresoPorNivelPanel.Controls.Add(ProgresoTitol);
-            ProgresoPorNivelPanel.Location = new Point(1112, 403);
-            ProgresoPorNivelPanel.Name = "ProgresoPorNivelPanel";
-            ProgresoPorNivelPanel.Padding = new Padding(12);
-            ProgresoPorNivelPanel.Size = new Size(549, 429);
-            ProgresoPorNivelPanel.TabIndex = 9;
-            // 
-            // ProgresoDesc
-            // 
-            ProgresoDesc.AutoSize = true;
-            ProgresoDesc.Font = new Font("Comfortaa", 8.249999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ProgresoDesc.ForeColor = Color.FromArgb(152, 162, 179);
-            ProgresoDesc.Location = new Point(21, 47);
-            ProgresoDesc.Name = "ProgresoDesc";
-            ProgresoDesc.Size = new Size(201, 18);
-            ProgresoDesc.TabIndex = 6;
-            ProgresoDesc.Text = "Distribución actual de los alumnos";
-            // 
-            // ProgresoTitol
-            // 
-            ProgresoTitol.AutoSize = true;
-            ProgresoTitol.Font = new Font("Comfortaa", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ProgresoTitol.ForeColor = Color.FromArgb(102, 112, 133);
-            ProgresoTitol.Location = new Point(15, 23);
-            ProgresoTitol.Name = "ProgresoTitol";
-            ProgresoTitol.Size = new Size(134, 21);
-            ProgresoTitol.TabIndex = 5;
-            ProgresoTitol.Text = "Progreso por nivel";
-            // 
             // PartidasRecientes
             // 
             PartidasRecientes.BackColor = Color.Transparent;
             PartidasRecientes.Controls.Add(dgvPartidasRecientes);
             PartidasRecientes.Controls.Add(PartidasDesc);
             PartidasRecientes.Controls.Add(PartidasTitol);
-            PartidasRecientes.Location = new Point(60, 403);
+            PartidasRecientes.Location = new Point(275, 399);
             PartidasRecientes.Name = "PartidasRecientes";
             PartidasRecientes.Padding = new Padding(12);
-            PartidasRecientes.Size = new Size(920, 429);
+            PartidasRecientes.Size = new Size(976, 429);
             PartidasRecientes.TabIndex = 8;
             PartidasRecientes.Paint += PartidasRecientes_Paint;
             // 
@@ -146,7 +108,7 @@
             dgvPartidasRecientes.Dock = DockStyle.Bottom;
             dgvPartidasRecientes.Location = new Point(12, 83);
             dgvPartidasRecientes.Name = "dgvPartidasRecientes";
-            dgvPartidasRecientes.Size = new Size(896, 334);
+            dgvPartidasRecientes.Size = new Size(952, 334);
             dgvPartidasRecientes.TabIndex = 5;
             // 
             // PartidasDesc
@@ -400,6 +362,7 @@
             lblAlumnos.Size = new Size(76, 34);
             lblAlumnos.TabIndex = 4;
             lblAlumnos.Text = "label1";
+            lblAlumnos.Click += lblAlumnos_Click;
             // 
             // LblDescripcionAlumnos
             // 
@@ -480,8 +443,6 @@
             Size = new Size(1871, 1280);
             PanelDashboard.ResumeLayout(false);
             PanelDashboard.PerformLayout();
-            ProgresoPorNivelPanel.ResumeLayout(false);
-            ProgresoPorNivelPanel.PerformLayout();
             PartidasRecientes.ResumeLayout(false);
             PartidasRecientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPartidasRecientes).EndInit();
@@ -527,11 +488,8 @@
         private Label lblValorSesions;
         private Label lblTitulSessions;
         private Controles.TarjetaDashboard PartidasRecientes;
-        private Controles.TarjetaDashboard ProgresoPorNivelPanel;
         private Label PartidasTitol;
         private Label PartidasDesc;
-        private Label ProgresoDesc;
-        private Label ProgresoTitol;
         private DataGridView dgvPartidasRecientes;
         private Label lblTiempoTotal;
         private Label lblMonedas;
